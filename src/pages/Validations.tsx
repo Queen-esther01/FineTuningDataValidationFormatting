@@ -156,7 +156,7 @@ const Validations = () => {
     return (
         <div className='max-width m-auto'>
             <Link to='/'><span>Back</span></Link>
-            <h1 className='text-center mt-10'>Run Validations on OpenAI Formatted File</h1>
+            <h1 className='text-center mt-10'>Run Validations on OpenAI Finetuning Data</h1>
             <div className='mt-8 flex flex-wrap gap-3 items-center'>
                 <input className='hidden' accept='.jsonl' onChange={handleUpload} type='file' ref={inputRef} />
                 <button onClick={handleInputClick}>Upload File</button>
