@@ -1,4 +1,3 @@
-import React, { ChangeEvent } from 'react'
 import { downloadFile } from '../helpers/downloadFile'
 
 const FormattedDataDisplay = ({ isLoadingJson, openAIData, setOpenAIData, fileName }:FormattedData) => {

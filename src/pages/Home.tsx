@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import UploadedFileDisplay from '../components/UploadedFileDisplay'
 import FormattedDataDisplay from '../components/FormattedDataDisplay'
@@ -100,7 +100,7 @@ const Home = () => {
 				setFileName(nameOfFile)
             }
 			reader.readAsText(file)
-			reader.onloadend = (e) => {
+			reader.onloadend = () => {
 				setIsLoadingJson(false)
 			}
         }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import ChecksToBeDone from '../components/ChecksToBeDone'
 import { Link } from 'react-router-dom'
 
@@ -17,7 +17,7 @@ const Validations = () => {
         'content_is_not_a_string': 0,
         'missing_assistant_message': 0,
     })
-    const [errorOccurence, setErrorOccurence] = useState<{[key:string]: string[]}>({
+    const [errorOccurence] = useState<{[key:string]: string[]}>({
         'data_is_not_an_object': [],
         'messages_key_missing': [],
         'role_key_missing': [],
@@ -37,16 +37,6 @@ const Validations = () => {
 		}
 	}
 
-    // let errors:{[key:string]: number} = {
-    //     'data_is_not_an_object': 0,
-    //     'messages_key_missing': 0,
-    //     'content_key_missing': 0,
-    //     'unrecognized_key': 0,
-    //     'unrecognized_role': 0,
-    //     'content_is_missing': 0,
-    //     'content_is_not_a_string': 0,
-    //     'missing_assistant_message': 0,
-    // }
 
     const handleUpload = (e:any) => {
 		if(e.target.files.length){
@@ -80,7 +70,6 @@ const Validations = () => {
 
                         if('messages' in jsonObject){
                             jsonObject.messages.forEach((message:{ role: string, content: string}) => {
-                                //console.log(message)
     
                                 // CHECK THAT ROLE KEY EXISTS
                                 if(!('role' in message)){
@@ -157,14 +146,11 @@ const Validations = () => {
                 setFileName(nameOfFile)
             }
 			reader.readAsText(file)
-			reader.onloadend = (e) => {
+			reader.onloadend = () => {
 				setIsFileValidated(true)
 			}
         }
 	}
-
-    console.log(errors)
-    console.log(errorOccurence)
 
 
     return (
@@ -184,7 +170,7 @@ const Validations = () => {
                     <div className='bg-slate-300 rounded-lg p-4'>
                         {
                             Object.entries(errors).map(([key, value], index) => (
-                                <div className='mb-5'>
+                                <div className='mb-5' key={index}>
                                     <div>
                                         <span className='font-semibold'>{ key }: </span>
                                         <span>{ value } { value > 1 ? 'occurences ' : 'occurence '}</span> 
